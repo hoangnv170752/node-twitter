@@ -1,5 +1,5 @@
 import express from "express";
-import userRouter from "./user.routes";
+import usersRouter from "./routes/user.routes";
 const app = express();
 const router = express.Router();
 
@@ -23,7 +23,8 @@ router.get('/tweets', (req, res) => {
   })
 })
 
-app.use('/api', userRouter);
+app.use(express.json());
+app.use('/api', usersRouter);
 
 app.listen(5656, () => {
   console.log('listening on port 5656');
