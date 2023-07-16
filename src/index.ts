@@ -1,5 +1,6 @@
 import express from "express";
 import usersRouter from "./routes/user.routes";
+import databaseService from "./services/database.services";
 const app = express();
 const router = express.Router();
 
@@ -25,6 +26,7 @@ router.get('/tweets', (req, res) => {
 
 app.use(express.json());
 app.use('/api', usersRouter);
+databaseService.connect();
 
 app.listen(5656, () => {
   console.log('listening on port 5656');
