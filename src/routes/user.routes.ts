@@ -1,11 +1,11 @@
-import express from "express";
-import { loginValidator } from "../middlewares/users.middlewares";
-import { loginController } from "../controllers/users.controllers";
-const usersRouter = express.Router();
+import express from 'express'
+import { loginValidator, registerValidator } from '../middlewares/users.middlewares'
+import { loginController, registerController } from '../controllers/users.controllers'
+const usersRouter = express.Router()
 
 usersRouter.use((req, res, next) => {
-  console.log('Time: ', Date.now());
-  next();
+  console.log('Time: ', Date.now())
+  next()
 })
 
 usersRouter.get('/tweets', (req, res) => {
@@ -19,8 +19,7 @@ usersRouter.get('/tweets', (req, res) => {
   })
 })
 
-usersRouter.post("/login", loginValidator, loginController)
+usersRouter.post('/login', loginValidator, loginController)
 
-export default usersRouter;
-
-
+usersRouter.post('/register', registerValidator, registerController)
+export default usersRouter
